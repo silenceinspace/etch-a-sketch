@@ -1,2 +1,2 @@
 # etch-a-sketch
-my second js project
+Start of the project - the 23rd of September

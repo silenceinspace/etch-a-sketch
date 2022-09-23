@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.349);
+    min-height: 100vh;
+}
+
+.square {
+    border: 1px solid black;
+    flex: 1;
+}
+
+.flex-grid {
+    background-color: white;
+    width:400px;
+    display:flex;
+}
+
+/* @media (max-width: 400px) {
+    .flex-grid {
+        display: block;
+    }
+} */

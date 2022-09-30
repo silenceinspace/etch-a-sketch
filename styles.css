@@ -17,9 +17,8 @@ body {
     margin: 50px auto;
     background-color: white;
     display:grid;
-    width:fit-content; /*my grid container should include the exact number of columns and have the according width*/
-    grid-template-columns: repeat(16, 1fr);
-    /* move this to my js code? */
+    width:400px;
+    height:400px;
 }
 
 .btn {

@@ -13,32 +13,50 @@ document.body.append(button);
 button.addEventListener('click', ()=> {
     columns = prompt('Choose the number of columns', 0);
     rows = prompt('Choose the number of rows', 0);
-    createDivs();
+    createGrid();
 })
 
-// here the loop should be adjusted to the prompt's data
-function createDivs() {
-    for (let i=1; i<=columns; i++) {
-        for (let j=1; j<=rows; j++){
-            let div = document.createElement('div');
-            div.className = `square`;
-            div.style.width = '20px';
-            div.style.height = '20px';
-            container.appendChild(div);
-        }
-}}
+function createGrid(){
+    container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+    createColumns();
+    createRows();
+    //create a button for setting a new number of grid ???
+    //create white background only on click
+};
+
+function createColumns() {
+    for (let i=1; i<=columns; i++){
+        let div = document.createElement('div');
+        div.className = 'square';
+        container.appendChild(div);
+    }
+}
+
+function createRows() {
+    for (let j=1; j<=rows*rows-rows; j++){ //it's important to do some math so that enough divs will be created
+        let div = document.createElement('div');
+        div.className = 'square';
+        container.appendChild(div);
+    }
+}
+
+
+
+
+
 
 // change color of my divs on hover
-const square = document.querySelectorAll('.square');
+// const square = document.querySelectorAll('.square');
 
-function changeColor() {
-    square.forEach((div) => {
-        div.addEventListener('mouseover', e => {
-            e.target.style.background = 'red';
-        })
-        div.addEventListener('click', e => {
-            e.target.style.background = 'white';
-        })
-    }) 
-}
-changeColor();
+// function changeColor() {
+//     square.forEach((div) => {
+//         div.addEventListener('mouseover', e => {
+//             e.target.style.background = 'red';
+//         })
+//         div.addEventListener('click', e => {
+//             e.target.style.background = 'white';
+//         })
+//     }) 
+// }
+// changeColor();

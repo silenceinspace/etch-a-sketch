@@ -13,14 +13,16 @@ document.body.append(button);
 button.addEventListener('click', ()=> {
     columns = prompt('Choose the number of columns', 0);
     rows = prompt('Choose the number of rows', 0);
-    createGrid();
-})
+    createGrid()}, 
+    {once:true} 
+);
 
 function createGrid(){
     container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
     createColumns();
     createRows();
+    addHover();
     //create a button for setting a new number of grid ???
     //create white background only on click
 };
@@ -44,19 +46,16 @@ function createRows() {
 
 
 
+// // change color of my divs on hover
+function addHover(){
+    let square = document.querySelectorAll('.square');
 
-
-// change color of my divs on hover
-// const square = document.querySelectorAll('.square');
-
-// function changeColor() {
-//     square.forEach((div) => {
-//         div.addEventListener('mouseover', e => {
-//             e.target.style.background = 'red';
-//         })
-//         div.addEventListener('click', e => {
-//             e.target.style.background = 'white';
-//         })
-//     }) 
-// }
-// changeColor();
+    square.forEach((div) => {
+        div.addEventListener('mouseover', e => {
+            e.target.style.background = 'red';
+        })
+        div.addEventListener('click', e => {
+            e.target.style.background = 'white';
+        })
+    })
+};

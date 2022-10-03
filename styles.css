@@ -13,23 +13,24 @@ body {
     border: 1px solid black;
 }
 
-.flex-grid {
+.css-grid {
     margin: 50px auto;
     background-color: white;
     display:grid;
-    width:400px;
-    height:400px;
+    width:500px;
+    height:500px;
+}
+
+.btn-flex {
+    display:flex;
+    justify-content:center;
+    column-gap: 50px;
 }
 
 .btn {
     font-size: 20px;
     padding:10px;
-    display:block;  /*button is an inline element by default*/
-    margin:0 auto;
 }
 
 /* @media (max-width: 400px) {
-    .flex-grid {
-        display: block;
-    }
 } */

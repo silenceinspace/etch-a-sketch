@@ -11,6 +11,7 @@ body {
 
 .square {
     border: 1px solid black;
+    cursor:cell;
 }
 
 .css-grid {

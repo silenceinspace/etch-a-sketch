@@ -52,7 +52,7 @@ function createGrid(){
 function addHover(){
     let square = document.querySelectorAll('.square');
     square.forEach((div) => {
-        div.addEventListener('mouseover', e => {
+        div.addEventListener('click', e=> {
             e.target.style.background = 'red';
         });
     });
@@ -96,7 +96,6 @@ function overWriteInfo() {
 // my ideas:
 // add SAVE-PROGRESS button to freeze sketching and open it a new window
 // set limit of the grid to 50x50
-// instead of reloading the page, try to make the button refresh data and create a new sketch pad
 // add different color options
 // hover should work only once the mouse is clicked
 // change the pointer to a pencil-ish thing

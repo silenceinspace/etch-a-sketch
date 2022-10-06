@@ -49,16 +49,13 @@ function createGrid(){
     addHover();
 };
 
-function addHover(){ //change background color 
+function addHover(){
     let square = document.querySelectorAll('.square');
     square.forEach((div) => {
         div.addEventListener('mouseover', e => {
             e.target.style.background = 'red';
-        })
-        div.addEventListener('click', e => {
-            e.target.style.background = 'white';
-        })
-    })
+        });
+    });
 };
 
 function createNewBtn() { 
@@ -68,17 +65,41 @@ function createNewBtn() {
     flexBtn.appendChild(newButton);
 
     newButton.addEventListener('click', ()=> {
-    window.location.reload();
+    overWriteInfo();
     })
 }
 
 function changeBtnText() {
     button.textContent = 'Already clicked!';
 }
-// add SAVE-PROGRESS button to freeze sketching - unable hover effect
-// have both the number of columns and rows equal, otherwise alert "ERROR"
-// set limit of the grid to 50x50, otherwise alert that it's too many blocks to generate
-// instead of reloading the page, try to make the button refresh data and create a new sketch pad
+
+function overWriteInfo() {
+    const myNode = document.getElementById('container');
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.lastChild);
+    };
+
+    columns = prompt('Choose the number of columns', 0);
+    rows = prompt('Choose the number of rows', 0);
+    createGrid();
+}
+
+
+
+
+
+
+// just trying out TOP's recommendations:
 // if 64 entered, then create 64x64 by a quick command without asking for the second number
-// once the button for generating grid is clicked, show a pop-up message for a few seconds "The limit of this sketch pad is 50x50"
-// add animation for displaying hover, make the changes appear more slowly
+
+
+// my ideas:
+// add SAVE-PROGRESS button to freeze sketching and open it a new window
+// set limit of the grid to 50x50
+// instead of reloading the page, try to make the button refresh data and create a new sketch pad
+// add different color options
+// hover should work only once the mouse is clicked
+// change the pointer to a pencil-ish thing
+// create a bar, moving which the size of grid will be changing automatically
+// add a clock showing time of particular session  
+

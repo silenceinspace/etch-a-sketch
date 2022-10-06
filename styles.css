@@ -17,8 +17,8 @@ body {
     margin: 50px auto;
     background-color: white;
     display:grid;
-    width:500px;
-    height:500px;
+    width:400px;  /*500px must be here*/
+    height:400px;
 }
 
 .btn-flex {

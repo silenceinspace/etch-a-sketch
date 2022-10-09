@@ -18,7 +18,7 @@ body {
     margin: 50px auto;
     background-color: white;
     display:grid;
-    width:400px;  /*500px must be here*/
+    width:400px; 
     height:400px;
 }
 

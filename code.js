@@ -3,8 +3,7 @@ let container = document.querySelector('#container');
 let flexBtn = document.querySelector('.btn-flex');
 
 // store info from the prompts 
-let columns;
-let rows;
+let sizeGrid;
 
 // create button + click event
 let button = document.createElement('button');
@@ -13,8 +12,7 @@ button.textContent = 'Click me!';
 flexBtn.append(button);
 
 button.addEventListener('click', ()=> {
-    columns = prompt('Choose the number of columns', 0);
-    rows = prompt('Choose the number of rows', 0);
+    sizeGrid = prompt('Choose the number of columns and rows', 0);
     createGrid();
     createNewBtn();
     changeBtnText();
@@ -24,39 +22,37 @@ button.addEventListener('click', ()=> {
 
 // functions
 function createGrid(){
-    if (columns > 50) { //only numbers for input!
+    if (sizeGrid > 50) { //only numbers for input!
         return alert('Mind the limit!');
     } else {
-        container.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-        for (let i=1; i<=columns; i++){
+        container.style.gridTemplateColumns = `repeat(${sizeGrid}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${sizeGrid}, 1fr)`;
+        for (let i=1; i<=sizeGrid*sizeGrid; i++){
             let div = document.createElement('div');
             div.className = 'square';
             container.appendChild(div);
         }
     }
-
-    if (rows > 50 || rows !== columns) {
-        return alert('Mind the limit!');
-    } else {
-        container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-        for (let j=1; j<=rows*rows-rows; j++){ //it's important to do some math so that enough divs will be created
-            let div = document.createElement('div');
-            div.className = 'square';
-            container.appendChild(div);
-        }
-    }
-
     addHover();
 };
+
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false); 
 
 function addHover(){
     let square = document.querySelectorAll('.square');
     square.forEach((div) => {
-        div.addEventListener('click', e=> {
-            e.target.style.background = 'red';
-        });
-    });
+        div.addEventListener('mouseover', changeColor);
+        }
+    );
 };
+
+function changeColor(e){
+    if (e.type === 'mouseover' && mouseDown) {
+        e.target.style.background = 'red';
+    };
+}
 
 function createNewBtn() { 
     let newButton = document.createElement('button');
@@ -79,13 +75,9 @@ function overWriteInfo() {
         myNode.removeChild(myNode.lastChild);
     };
 
-    columns = prompt('Choose the number of columns', 0);
-    rows = prompt('Choose the number of rows', 0);
+    sizeGrid = prompt('Choose the number of columns and rows', 0);
     createGrid();
 }
-
-
-
 
 
 
@@ -101,4 +93,3 @@ function overWriteInfo() {
 // change the pointer to a pencil-ish thing
 // create a bar, moving which the size of grid will be changing automatically
 // add a clock showing time of particular session  
-

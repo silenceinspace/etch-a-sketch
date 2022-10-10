@@ -20,10 +20,18 @@ button.addEventListener('click', ()=> {
     {once:true}
 );
 
+//color palette
+let newColor;
+let anotherColor = document.querySelector('.palette');
+anotherColor.addEventListener('input', ()=> {
+    newColor = anotherColor.value;
+});
+
 // functions
 function createGrid(){
     if (sizeGrid > 50) { //only numbers for input!
         return alert('Mind the limit!');
+    
     } else {
         container.style.gridTemplateColumns = `repeat(${sizeGrid}, 1fr)`;
         container.style.gridTemplateRows = `repeat(${sizeGrid}, 1fr)`;
@@ -50,7 +58,7 @@ function addHover(){
 
 function changeColor(e){
     if (e.type === 'mouseover' && mouseDown) {
-        e.target.style.background = 'red';
+        e.target.style.background = newColor; 
     };
 }
 
@@ -80,16 +88,10 @@ function overWriteInfo() {
 }
 
 
-
-// just trying out TOP's recommendations:
-// if 64 entered, then create 64x64 by a quick command without asking for the second number
-
-
 // my ideas:
 // add SAVE-PROGRESS button to freeze sketching and open it a new window
-// set limit of the grid to 50x50
-// add different color options
-// hover should work only once the mouse is clicked
-// change the pointer to a pencil-ish thing
-// create a bar, moving which the size of grid will be changing automatically
-// add a clock showing time of particular session  
+// set limit of the grid to 50x50 (with a toggling bar)
+// style input color to have it with radius 50%
+// add a clock showing time of particular session
+// think how I can active erase option
+// work with the sidebar, because it's the place where all actions will be held

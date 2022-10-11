@@ -1,24 +1,17 @@
 // enable manipulations with DOM
 let container = document.querySelector('#container');
-let flexBtn = document.querySelector('.btn-flex');
+let paint = document.querySelector('.paint');
+let erase = document.querySelector('.erase');
+let size = document.querySelector('.size');
 
 // store info from the prompts 
 let sizeGrid;
 
-// create button + click event
-let button = document.createElement('button');
-button.className = 'btn';
-button.textContent = 'Click me!';
-flexBtn.append(button);
-
-button.addEventListener('click', ()=> {
+paint.addEventListener('click', ()=> {
+    overWriteInfo();
     sizeGrid = prompt('Choose the number of columns and rows', 0);
     createGrid();
-    createNewBtn();
-    changeBtnText();
-},
-    {once:true}
-);
+});
 
 //color palette
 let newColor;
@@ -62,36 +55,39 @@ function changeColor(e){
     };
 }
 
-function createNewBtn() { 
-    let newButton = document.createElement('button');
-    newButton.className = 'btn';
-    newButton.textContent = 'Create a new grid';
-    flexBtn.appendChild(newButton);
-
-    newButton.addEventListener('click', ()=> {
-    overWriteInfo();
-    })
-}
-
-function changeBtnText() {
-    button.textContent = 'Already clicked!';
-}
-
 function overWriteInfo() {
     const myNode = document.getElementById('container');
     while (myNode.firstChild) {
         myNode.removeChild(myNode.lastChild);
     };
-
-    sizeGrid = prompt('Choose the number of columns and rows', 0);
-    createGrid();
 }
+
+erase.addEventListener('click', ()=> {
+    overWriteInfo();
+});
+
+size.addEventListener('click', ()=> {
+    create25x25();      
+});
+
+function create25x25() {
+    overWriteInfo();
+
+    container.style.gridTemplateColumns = 'repeat(25, 1fr)';
+    container.style.gridTemplateRows = 'repeat(25, 1fr)';
+    for (let i=1; i<=25*25; i++){
+        let div = document.createElement('div');
+        div.className = 'square';
+        container.appendChild(div);
+    };
+    alert('25x25 grid is about to appear!');
+    addHover();
+};
 
 
 // my ideas:
 // add SAVE-PROGRESS button to freeze sketching and open it a new window
 // set limit of the grid to 50x50 (with a toggling bar)
-// style input color to have it with radius 50%
+// style input color to have it with radius 50% + make sure the mouseover+mousedown thing works properly 
 // add a clock showing time of particular session
-// think how I can active erase option
 // work with the sidebar, because it's the place where all actions will be held

@@ -21,14 +21,16 @@ anotherColor.addEventListener('input', ()=> {
 });
 
 // functions
-function createGrid(){
-    if (sizeGrid > 50) { //only numbers for input!
+function createGrid(size){
+    size = sizeGrid;
+
+    if (size > 50) { //only numbers for input!
         return alert('Mind the limit!');
     
     } else {
-        container.style.gridTemplateColumns = `repeat(${sizeGrid}, 1fr)`;
-        container.style.gridTemplateRows = `repeat(${sizeGrid}, 1fr)`;
-        for (let i=1; i<=sizeGrid*sizeGrid; i++){
+        container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+        for (let i=1; i<=size*size; i++){
             let div = document.createElement('div');
             div.className = 'square';
             container.appendChild(div);
@@ -73,13 +75,13 @@ size.addEventListener('click', ()=> {
 function create25x25() {
     overWriteInfo();
 
-    container.style.gridTemplateColumns = 'repeat(25, 1fr)';
-    container.style.gridTemplateRows = 'repeat(25, 1fr)';
-    for (let i=1; i<=25*25; i++){
-        let div = document.createElement('div');
-        div.className = 'square';
-        container.appendChild(div);
-    };
+    // container.style.gridTemplateColumns = 'repeat(25, 1fr)';
+    // container.style.gridTemplateRows = 'repeat(25, 1fr)';
+    // for (let i=1; i<=25*25; i++){
+    //     let div = document.createElement('div');
+    //     div.className = 'square';
+    //     container.appendChild(div);
+    // };
     alert('25x25 grid is about to appear!');
     addHover();
 };
@@ -87,7 +89,17 @@ function create25x25() {
 
 // my ideas:
 // add SAVE-PROGRESS button to freeze sketching and open it a new window
-// set limit of the grid to 50x50 (with a toggling bar)
+// finish the slider
+// add hovered text for "extra info"
 // style input color to have it with radius 50% + make sure the mouseover+mousedown thing works properly 
 // add a clock showing time of particular session
 // work with the sidebar, because it's the place where all actions will be held
+//what is webkit? study it more
+
+let slider = document.querySelector('#range');
+let output = document.querySelector('#demo');
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+    output.innerHTML = this.value;
+}

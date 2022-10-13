@@ -2,6 +2,12 @@
 let container = document.querySelector('#container');
 let erase = document.querySelector('.erase');
 let size = document.querySelector('.size');
+let background = document.querySelector('.background');
+
+//change grid's background
+// background.addEventListener('click', () => {
+//     container.style.background = 'black';
+// });
 
 //color palette
 let newColor;
@@ -101,9 +107,11 @@ function create25x25() {
 
 
 // my ideas:
-// add SAVE-PROGRESS button to freeze sketching and open it a new window
-// add hovered text for "extra info"
-// style input color to have it with radius 50% + make sure the mouseover+mousedown thing works properly 
-// add a clock showing time of particular session
-// work with the sidebar, because it's the place where all actions will be held
-//what is webkit? study it more
+
+// 1. add SAVE-PROGRESS button to freeze sketching and open it a new window
+// 2. add hovered text for "extra info"
+// 3. style input color to have it with radius 50% + make sure the mouseover+mousedown thing works properly 
+// 4. add a clock showing time of particular session
+// 5. work with the sidebar, because it's the place where all actions will be held
+// 6. what is webkit? study it more
+// 7. add a dark/light mode

@@ -58,6 +58,12 @@ body {
     border:3px solid black;
 }
 
+.slider-value {
+    color:red;
+    padding-left: 30px;
+    font-size: 1.8rem;
+}
+
 /* choosing a color */
 .palette {
     display:block;

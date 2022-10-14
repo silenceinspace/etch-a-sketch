@@ -2,12 +2,13 @@
 let container = document.querySelector('#container');
 let erase = document.querySelector('.erase');
 let size = document.querySelector('.size');
-let background = document.querySelector('.background');
+let darkMode = document.querySelector('.dark');
+let save = document.querySelector('.save');
 
 //change grid's background
-// background.addEventListener('click', () => {
-//     container.style.background = 'black';
-// });
+darkMode.addEventListener('click', () => {
+    container.classList.toggle('dark-mode');
+});
 
 //color palette
 let newColor;
@@ -27,12 +28,6 @@ function addHover(){
         div.addEventListener('mouseover', changeColor);
         }
     );
-}
-
-function changeColor(e){
-    if (e.type === 'mouseover' && mouseDown) {
-        e.target.style.background = newColor; 
-    };
 }
 
 // mousedown + mouseover = hover by clicking
@@ -85,6 +80,7 @@ function overWriteInfo() {
 
 erase.addEventListener('click', ()=> {
     overWriteInfo();
+    container.classList.remove('dark-mode');
 });
 
 // set the concrete size
@@ -101,9 +97,13 @@ function create25x25() {
         div.className = 'square';
         container.appendChild(div);
     };
+    container.classList.remove('dark-mode');
     alert('25x25 grid is about to appear!');
     addHover();
 };
+
+// make a screenshot and open in a new window
+ 
 
 
 // my ideas:

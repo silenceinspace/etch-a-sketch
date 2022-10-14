@@ -22,6 +22,10 @@ body {
     height:400px;
 }
 
+.dark-mode {
+    background-color: black;
+}
+
 #layout {
     display:grid;
     grid-template-columns: 300px 1fr;

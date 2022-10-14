@@ -103,7 +103,11 @@ function create25x25() {
 };
 
 // make a screenshot and open in a new window
- 
+function takeshot(){
+    window.open('', container.toDataURL());
+};
+
+save.addEventListener('click', takeshot);
 
 
 // my ideas:

@@ -103,19 +103,26 @@ function create25x25() {
 };
 
 // make a screenshot and open in a new window
-function takeshot(){
-    window.open('', container.toDataURL());
+function createCanvas(){
+    let div = document.getElementById('container');
+    
+    html2canvas(div).then(
+        function(canvas) {
+            document.getElementById('output').appendChild(canvas);
+        }
+    );
+    // window.open('', document.getElementById('tutorial'));
+    
 };
 
-save.addEventListener('click', takeshot);
+save.addEventListener('click', createCanvas);
 
 
 // my ideas:
 
-// 1. add SAVE-PROGRESS button to freeze sketching and open it a new window
+// 1. learn about the canvas element
 // 2. add hovered text for "extra info"
 // 3. style input color to have it with radius 50% + make sure the mouseover+mousedown thing works properly 
 // 4. add a clock showing time of particular session
 // 5. work with the sidebar, because it's the place where all actions will be held
-// 6. what is webkit? study it more
-// 7. add a dark/light mode
+// 6. add footer

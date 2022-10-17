@@ -15,7 +15,7 @@ body {
 }
 
 .css-grid {
-    margin: 50px auto;
+    margin: 100px auto;
     background-color: white;
     display:grid;
     width:400px; 
@@ -139,4 +139,52 @@ body {
     height: 25px;
     background: #04AA6D;
     cursor:pointer;
+}
+
+/* #output { */
+    /* position:absolute; */
+    /* margin-top: 100px; */
+    /* margin-left: 300px; */
+    /* border:red 5px solid; */
+/* }  */
+
+
+/* hovered text for the side bar */
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+    width:200px;
+    background: rgb(3, 109, 47);
+    color: #fff;
+    font-size: 1rem;
+    text-align:center;
+    padding:5px;
+    border-radius: 12px;
+
+    bottom: 120%;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip .tooltiptext::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgb(3, 109, 47) transparent transparent transparent;
 }

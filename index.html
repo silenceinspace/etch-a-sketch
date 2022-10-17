@@ -18,10 +18,18 @@
         </div>
         <div class="menu">
             <input type="color" class="palette">
-            <div class="setting erase">Erase</div>
-            <div class="setting save">Save</div>
-            <div class="setting dark">Dark/light mode</div>
-            <div class="setting size">Size 25x25</div>
+            <div class="setting erase tooltip">Erase
+                <span class="tooltiptext">Erases your drawing completely, and you have to choose the size again</span>
+            </div>
+            <div class="setting save tooltip">Save
+                <span class="tooltiptext">Opens your drawing in a new window where you can download it</span>
+            </div>
+            <div class="setting dark tooltip">Dark/light mode
+                <span class="tooltiptext">Changes the background of the drawing's field</span>
+            </div>
+            <div class="setting size tooltip">Size 25x25
+                <span class="tooltiptext">Automatically sets the size, but you still need to choose a color</span>
+            </div>
             <div class="slide-box">
                 <input id="range" class="slider" type="range" min="1" max="50" value="25">
                 <p class="slider-value">Size: <span id="demo"></span></p>
@@ -29,5 +37,7 @@
         </div>
     </div>
     <div id="container" class="css-grid"></div>
+    <!-- <div id="output"></div> -->
+    <!-- <canvas id="tutorial" width="200" height="200"></canvas> -->
 </body>
 </html>

@@ -22,14 +22,6 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false); 
 
-function addHover(){
-    let square = document.querySelectorAll('.square');
-    square.forEach((div) => {
-        div.addEventListener('mouseover', changeColor);
-        }
-    );
-}
-
 // mousedown + mouseover = hover by clicking
 function addHover(){
     let square = document.querySelectorAll('.square');
@@ -41,7 +33,8 @@ function addHover(){
 
 function changeColor(e){
     if (e.type === 'mouseover' && mouseDown) {
-        e.target.style.background = newColor; 
+        e.target.style.background = newColor;
+        // console.log(e); // trying to fix the bug 
     };
 }
 
@@ -68,7 +61,6 @@ function createGrid(){
     }
     addHover();
 };
-
 
 // clear grid
 function overWriteInfo() {
@@ -102,44 +94,22 @@ function create25x25() {
     addHover();
 };
 
+function saveDrawing() {
+    html2canvas(container).then (canvas => {
+        let dataUrl = canvas.toDataURL();
+        let a = document.createElement('a');
+        a.setAttribute('href', dataUrl);
+        a.setAttribute('download', 'my-drawing.png');
+        a.click();
+    })
+}
 
-// make a screenshot and open in a new window
-// function createCanvas(){
-//     let div = document.getElementById('container');
-    
-//     html2canvas(div).then(
-//         function(canvas) {
-//             document.getElementById('output').appendChild(canvas);
-//         }
-//     );
-//     window.open('', document.getElementById('tutorial'));
-    
-// };
-// save.addEventListener('click', createCanvas);
-
+save.addEventListener('click', saveDrawing);
 
 // my ideas:
-// 1. canvas element (creating in a small popup window on top of the existing page)
-// 2. style input color to have it with radius 50% + make sure the mouseover+mousedown thing works properly 
-// 3. add a clock showing time of particular session
-// 4. work with the sidebar, because it's the place where all actions will be held
-// 5. creating user's progress (localstorage)
 
-
-// feature detecting localStorage function???
-// let inputColor = document.getElementById('color');
-// if(!localStorage.getItem('color')) {
-//     populateStorage();
-// } else {
-//     setStyles();
-// }
-// function populateStorage() {
-//     localStorage.setItem('color', document.getElementById('color').value);
-//     setStyles();
-// }
-// function setStyles() {
-//     let currentColor = localStorage.getItem('color');
-//     document.getElementById('color').value = currentColor;
-//     inputColor.value = currentColor;
-// }
-// inputColor.onchange = populateStorage;
+// 1. fix the dragging effect
+// 2. add an eraser for a single div
+// 3. add a favicon to the webpage
+// 4. optimize the code
+// 5. make the sketch responsive 

@@ -1,6 +1,6 @@
 // enable manipulations with DOM
 let container = document.querySelector('#container');
-let erase = document.querySelector('.erase');
+let clear = document.querySelector('.clear');
 let size = document.querySelector('.size');
 let darkMode = document.querySelector('.dark');
 let save = document.querySelector('.save');
@@ -22,7 +22,6 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false); 
 
-// mousedown + mouseover = hover by clicking
 function addHover(){
     let square = document.querySelectorAll('.square');
     square.forEach((div) => {
@@ -34,7 +33,7 @@ function addHover(){
 function changeColor(e){
     if (e.type === 'mouseover' && mouseDown) {
         e.target.style.background = newColor;
-        // console.log(e); // trying to fix the bug 
+        // console.log(e); // trying to fix a bug 
     };
 }
 
@@ -62,7 +61,7 @@ function createGrid(){
     addHover();
 };
 
-// clear grid
+//clear grid
 function overWriteInfo() {
     const myNode = document.getElementById('container');
     while (myNode.firstChild) {
@@ -70,12 +69,12 @@ function overWriteInfo() {
     };
 }
 
-erase.addEventListener('click', ()=> {
+clear.addEventListener('click', ()=> {
     overWriteInfo();
     container.classList.remove('dark-mode');
 });
 
-// set the concrete size
+//set the concrete size
 size.addEventListener('click', ()=> {
     create25x25();      
 });
@@ -94,6 +93,7 @@ function create25x25() {
     addHover();
 };
 
+//save drawing 
 function saveDrawing() {
     html2canvas(container).then (canvas => {
         let dataUrl = canvas.toDataURL();
@@ -105,11 +105,3 @@ function saveDrawing() {
 }
 
 save.addEventListener('click', saveDrawing);
-
-// my ideas:
-
-// 1. fix the dragging effect
-// 2. add an eraser for a single div
-// 3. add a favicon to the webpage
-// 4. optimize the code
-// 5. make the sketch responsive 
